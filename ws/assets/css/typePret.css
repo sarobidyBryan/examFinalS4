@@ -89,3 +89,35 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
+#edit-btn, #delete-btn {
+    padding: 8px 12px;
+    margin: 0 4px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #f0f4fa;
+    color: #2e3b4e;
+    vertical-align: middle;
+}
+
+#edit-btn:hover {
+    background-color: #4da3ff;
+    color: #fff;
+}
+
+#delete-btn {
+    background-color: #ffeaea;
+    color: #c0392b;
+}
+
+#delete-btn:hover {
+    background-color: #ffb3b3;
+    color: #fff;
+}
+
+#edit-btn i, #delete-btn i {
+    pointer-events: none;
+}

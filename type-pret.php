@@ -39,8 +39,8 @@
           <th>Description</th>
           <th>Min</th>
           <th>Max</th>
-          <th>ID calcul TI</th>
-          <th>ID def année</th>
+          <th>Calcul TI</th>
+          <th>Définition année</th>
           <th>Actions</th>
         </tr>
       </thead>
