@@ -23,50 +23,8 @@
         <p id="message" class="message"></p>
     </div>
 
-
-    <script>
-        const apiBase = "http://localhost:90/examFinalS4/ws";
-
-        function ajax(method, url, data, callback) {
-            const xhr = new XMLHttpRequest();
-            xhr.open(method, apiBase + url, true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    callback(JSON.parse(xhr.responseText));
-                }
-            };
-            xhr.send(data);
-
-        }
-
-        function ajoutMontant() {
-            const montant = document.getElementById("montant").value;
-
-            const data = `montant=${encodeURIComponent(montant)}`;
-
-
-            // Correction de l'URL pour inclure le bon chemin relatif
-            ajax("POST", "/fond", data, (response) => {
-                resetForm();
-                if (response.success) {
-                    document.getElementById("message").className = "success";
-                    document.getElementById("message").textContent = response.message;
-                } else {
-                    document.getElementById("message").className = "error";
-                    document.getElementById("message").textContent = response.error;
-                }
-            });
-        }
-
-        function remplirFormulaire(e) {
-            document.getElementById("montant").value = e.montant;
-        }
-
-        function resetForm() {
-            document.getElementById("montant").value = "";
-        }
-    </script>
+    <script src="ws/assets/js/base.js"></script>
+    <script src="ws/assets/js/ajout-fond.js"></script>
 </body>
 
 </html>
