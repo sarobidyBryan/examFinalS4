@@ -51,23 +51,31 @@ function chargerDropdowns() {
 }
 chargerDropdowns();
 
+let simulationResult = null; // Stockage sécurisé
+
 function simulerPaiement(e) {
   e.preventDefault();
-  const data = 
-    `date_pret=${document.getElementById("date_pret").value}&` +
-    `montant=${document.getElementById("montant").value}&` +
-    `duree=${document.getElementById("duree").value}&` +
-    `delai=${document.getElementById("delai").value}&` +
-    `assurance=${document.getElementById("assurance").value}&` +
-    `taux=${document.getElementById("id_type_pret").selectedOptions[0].dataset.taux}`;
 
-  ajax("POST", "/simuler-pret", data, (res) => {
+  const data = new URLSearchParams({
+    date_pret: document.getElementById("date_pret").value,
+    montant: document.getElementById("montant").value,
+    duree: document.getElementById("duree").value,
+    delai: document.getElementById("delai").value,
+    assurance: document.getElementById("assurance").value,
+    taux: document.getElementById("id_type_pret").selectedOptions[0].dataset.taux
+  });
+
+  ajax("POST", "/simuler-pret", data.toString(), (res) => {
     const div = document.getElementById("simulation-resultat");
+
     if (res.error) {
       div.innerHTML = `<p style="color:red">${res.error}</p>`;
       document.getElementById("bouton-valider").style.display = "none";
+      simulationResult = null;
       return;
     }
+
+    simulationResult = res; // Stocker la simulation originale
 
     let html = `
       <table border="1" cellpadding="5">
@@ -96,21 +104,42 @@ function simulerPaiement(e) {
   });
 }
 
-function validerPret() {
-  const data = 
-    `id_compte_client=${document.getElementById("id_compte_client").value}&` +
-    `id_type_pret=${document.getElementById("id_type_pret").value}&` +
-    `date_pret=${document.getElementById("date_pret").value}&` +
-    `montant=${document.getElementById("montant").value}&` +
-    `duree=${document.getElementById("duree").value}&` +
-    `delai=${document.getElementById("delai").value}&` +
-    `assurance=${document.getElementById("assurance").value}`;
 
-  ajax("POST", "/prets", data, (res) => {
-    const msgDiv = document.getElementById("message");
-    msgDiv.innerHTML = res.error 
-      ? `<p style="color:red">${res.error}</p>` 
-      : `<p style="color:green">${res.message}</p>`;
+function validerPret() {
+  const dataPret = new URLSearchParams({
+    id_compte_client: document.getElementById("id_compte_client").value,
+    id_type_pret: document.getElementById("id_type_pret").value,
+    date_pret: document.getElementById("date_pret").value,
+    montant: document.getElementById("montant").value,
+    duree: document.getElementById("duree").value,
+    delai: document.getElementById("delai").value,
+    assurance: document.getElementById("assurance").value
+  });
+
+  ajax("POST", "/prets", dataPret.toString(), (res) => {
+    if (res.error) {
+      document.getElementById("message").innerHTML = `<p style="color:red">${res.error}</p>`;
+      return;
+    }
+
+    const id_pret = res.id;
+    console.log("Prêt créé avec ID :", id_pret);
+    // Utiliser les données de simulation stockées
+    simulationResult.paiements.forEach(p => {
+      const remboursement = new URLSearchParams({
+        date_remboursement: p.date,
+        montant_paye_base: p.amortissement,
+        montant_paye_interet: p.interet,
+        montant_restant: p.capital_restant,
+        assurance: p.assurance,
+        id_pret: id_pret
+      });
+
+      ajax("POST", "/remboursement_pret", remboursement.toString(), () => {});
+    });
+
+    document.getElementById("message").innerHTML = `<p style="color:green">${res.message}. Remboursements enregistrés.</p>`;
   });
 }
+
 </script>
