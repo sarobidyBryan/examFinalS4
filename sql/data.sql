@@ -48,5 +48,5 @@ INSERT INTO ef_definition_annee (nombre_jours) VALUES
 
 
 INSERT INTO ef_calcul_taux_interet (description) VALUES 
-('intérêt simple'),
-('intérêt composé');
+('interet simple'),
+('interet compose');

@@ -1,4 +1,4 @@
-CREATE TABLE etablissement_financier;
+CREATE database etablissement_financier;
 USE etablissement_financier;
 
 -- 1. Client

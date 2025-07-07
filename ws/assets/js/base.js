@@ -1,4 +1,4 @@
-const apiBase = "http://localhost/L2/examFinalS4/ws";
+const apiBase = "http://localhost:90/examFinalS4/ws";
 
 function ajax(method, url, data, callback) {
   const xhr = new XMLHttpRequest();

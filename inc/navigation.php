@@ -4,5 +4,6 @@
         <li><a href="ajout-fond.php"><i class="fa fa-plus-square"></i> Ajout de fond</a></li>
         <li><a href="creation_type_pret.php"><i class="fa fa-cogs"></i> Création type de prêt</a></li>
         <li><a href="gestion_pret.php"><i class="fa fa-book"></i> Gestion des prêts</a></li>
+        <li><a href="type-pret.php"><i class="fa fa-book"></i> Gestion type de prêt</a></li>
     </ul>
 </div>
