@@ -91,6 +91,8 @@ CREATE TABLE ef_pret (
     duree INT,
     id_type_pret INT,
     id_compte_client INT,
+    delai int,
+    assurance int,
     FOREIGN KEY (id_type_pret) REFERENCES ef_type_pret(id_type_pret),
     FOREIGN KEY (id_compte_client) REFERENCES ef_compte_client(id_compte_client)
 );
@@ -110,7 +112,8 @@ CREATE TABLE ef_mouvement_client (
 CREATE TABLE ef_remboursement_pret (
     id_remboursement_pret INT AUTO_INCREMENT PRIMARY KEY,
     date_remboursement DATE,
-    montant_paye DECIMAL(15,2),
+    montant_paye_base DECIMAL(15,2),
+    montant_paye_interet DECIMAL(15,2),
     montant_restant DECIMAL(15,2),
     id_pret INT,
     FOREIGN KEY (id_pret) REFERENCES ef_pret(id_pret)
