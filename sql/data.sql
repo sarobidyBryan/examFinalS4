@@ -25,10 +25,12 @@ INSERT INTO ef_type_pret (taux, duree_min, description, pret_min, pret_max, id_c
 (4.5, 60, 'pret immobilier',     5000000, 50000000, 2, 2),
 (3.0, 12, 'pret etudiant',       200000, 2000000, 1, 1);
 
+insert into ef_banque(nom) values ('admin');
+insert into ef_compte_banque(solde_actuel,solde_precedent,id_banque) values (0,0,1);
 
-
-
-
+INSERT INTO ef_type_mouvement (description) VALUES 
+('debit'),
+('credit');
 
 
 

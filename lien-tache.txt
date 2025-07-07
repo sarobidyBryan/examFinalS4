@@ -1,1 +1,6 @@
 https://docs.google.com/spreadsheets/d/1VqJx6zn7hvXylxQwFQ5iH_7-OdBSbu0v6p0_y93G6Ck/edit?usp=sharing
+
+ip : 172.60.0.13
+ip : 172.60.0.17
+ip : 172.60.0.18
+ip : 172.60.255.250
