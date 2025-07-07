@@ -27,6 +27,26 @@ INSERT INTO ef_type_pret (taux, duree_min, description, pret_min, pret_max, id_c
 
 
 
+INSERT INTO ef_client (nom, prenom) VALUES 
+('Rakoto', 'Jean'),
+('Rasoa', 'Marie');
+
+
+INSERT INTO ef_compte_client (solde_actuel, solde_precedent, id_client) VALUES 
+(500000.00, 600000.00, 1),
+(300000.00, 300000.00, 2);
+
+
+
+INSERT INTO ef_definition_annee (nombre_jours) VALUES 
+(360), (365);
+
+
+INSERT INTO ef_calcul_taux_interet (description) VALUES 
+('intérêt simple'),
+('intérêt composé');
+
+
 
 
 
