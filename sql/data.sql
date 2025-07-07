@@ -1,12 +1,15 @@
-INSERT INTO ef_status_pret (description) VALUES 
-('en cours'),
-('rembourse'),
-('en retard');
-
+insert into ef_banque (nom) values ('admin');
 
 INSERT INTO ef_type_mouvement (description) VALUES 
 ('debit'),
 ('credit');
+
+insert into ef_compte_banque (solde_actuel,solde_precedent) values (0,0,1);
+
+INSERT INTO ef_status_pret (description) VALUES 
+('en cours'),
+('rembourse'),
+('en retard');
 
 
 INSERT INTO ef_calcul_taux_interet (description) VALUES 
