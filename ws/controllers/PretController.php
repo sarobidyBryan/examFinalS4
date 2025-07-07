@@ -19,6 +19,30 @@ class PretController {
       Flight::json(['message' => 'Prêt créé avec succès.', 'id' => $result['id']]);
     }
   }
-  
-  
+
+  public static function getAll() {
+    $db = getDB();
+    $data = Pret::getAll($db);
+    Flight::json($data);
+  }
+
+  public static function findBetweenDates() {
+    $data = Flight::request()->data;
+    $startDate = $data->start_date;
+    $endDate = $data->end_date;
+
+    $result = Pret::findBetweenDates($startDate, $endDate);
+    Flight::json($result);
+  }
+
+  public static function getById($id) {
+    $db = getDB();
+    $pret = Pret::findById($db, $id);
+    if ($pret) {
+      Flight::json($pret);
+    } else {
+      Flight::json(['error' => 'Prêt non trouvé.'], 404);
+    }
+  }
+
 }
