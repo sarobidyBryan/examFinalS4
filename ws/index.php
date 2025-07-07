@@ -9,6 +9,8 @@ require 'routes/type_pret_routes.php';
 require 'routes/calcul_taux_interet_routes.php';
 require 'routes/definition_annee_routes.php';
 require 'routes/compte_clients.php';
+require 'routes/simulation_pret_routes.php';
+
 require 'routes/remboursement_pret_routes.php';
 
 Flight::start();
