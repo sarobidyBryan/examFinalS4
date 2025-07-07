@@ -1,11 +1,6 @@
 https://docs.google.com/spreadsheets/d/1VqJx6zn7hvXylxQwFQ5iH_7-OdBSbu0v6p0_y93G6Ck/edit?usp=sharing
 
-172.60.0.13
-172.60.0.17
-172.60.0.18
-172.60.255.250
-
-
-https://docs.google.com/document/d/1N5nFoQRECTj1UZuwxK8mapdOh2BF8tppXddlfy8zjkU/preview?tab=t.0#heading=h.bnfk4ua126xg
-
-
+ip : 172.60.0.13
+ip : 172.60.0.17
+ip : 172.60.0.18
+ip : 172.60.255.250

@@ -1,5 +1,5 @@
-CREATE DATABASE etablissement_financier;
-USE etablissement_financier
+CREATE TABLE etablissement_financier;
+USE etablissement_financier;
 
 -- 1. Client
 CREATE TABLE ef_client (
@@ -43,6 +43,19 @@ CREATE TABLE ef_type_mouvement (
     id_type_mouvement INT AUTO_INCREMENT PRIMARY KEY,
     description VARCHAR(50)
 );
+
+
+-- 12. Mouvement banque
+CREATE TABLE ef_mouvement_banque (
+    id_mouvement_banque INT AUTO_INCREMENT PRIMARY KEY,
+    date_mouvement DATE,
+    montant DECIMAL(15,2),
+    id_compte_banque INT,
+    id_type_mouvement INT,
+    FOREIGN KEY (id_compte_banque) REFERENCES ef_compte_banque(id_compte_banque),
+    FOREIGN KEY (id_type_mouvement) REFERENCES ef_type_mouvement(id_type_mouvement)
+);
+
 
 -- 7. Calcul taux d’intérêt
 CREATE TABLE ef_calcul_taux_interet (
@@ -92,17 +105,6 @@ CREATE TABLE ef_mouvement_client (
     id_compte_client INT,
     id_type_mouvement INT,
     FOREIGN KEY (id_compte_client) REFERENCES ef_compte_client(id_compte_client),
-    FOREIGN KEY (id_type_mouvement) REFERENCES ef_type_mouvement(id_type_mouvement)
-);
-
--- 12. Mouvement banque
-CREATE TABLE ef_mouvement_banque (
-    id_mouvement_banque INT AUTO_INCREMENT PRIMARY KEY,
-    date_mouvement DATE,
-    montant DECIMAL(15,2),
-    id_compte_banque INT,
-    id_type_mouvement INT,
-    FOREIGN KEY (id_compte_banque) REFERENCES ef_compte_banque(id_compte_banque),
     FOREIGN KEY (id_type_mouvement) REFERENCES ef_type_mouvement(id_type_mouvement)
 );
 
