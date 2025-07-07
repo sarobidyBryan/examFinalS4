@@ -58,10 +58,28 @@ input[type="number"]:focus {
 .success {
     margin-top: 15px;
     font-weight: bold;
-    color: #2e7d32; /* vert succès */
+    color: #2e7d32;
+    /* vert succès */
 }
+
 .error {
     margin-top: 15px;
     font-weight: bold;
     color: #a93232;
+}
+
+#solde {
+    font-weight: bold;
+    color: #357ec7;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+#solde-section{
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #444;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
 }

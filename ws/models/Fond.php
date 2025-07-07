@@ -32,10 +32,26 @@ class Fond{
             $stmt->execute([$solde_precedent, $solde_actuel]);
 
             $db->commit();
-            return $id_mouvement;
+            $result = [];
+            $result['id'] = $id_mouvement;
+            $result['solde'] = $solde_actuel;
+            return $result;
         } catch (Exception $e) {
             $db->rollBack();
             throw $e;
         }
+    }
+
+    public static function getSolde() {
+        $db = getDB();
+        $stmt = $db->prepare("SELECT solde_actuel FROM ef_compte_banque WHERE id_compte_banque = 1");
+        $stmt->execute();
+        $compte = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        if (!$compte) {
+            throw new Exception("Compte banque introuvable");
+        }
+        
+        return $compte['solde_actuel'];
     }
 }
