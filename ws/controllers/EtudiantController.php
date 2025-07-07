@@ -7,7 +7,8 @@ require_once __DIR__ . '/../helpers/Utils.php';
 class EtudiantController {
     public static function getAll() {
         $etudiants = Etudiant::getAll();
-        Flight::json($etudiants);
+        // Flight::json($etudiants);
+        return 'test';
     }
 
     public static function getById($id) {
