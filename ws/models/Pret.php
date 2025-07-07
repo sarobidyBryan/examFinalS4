@@ -31,13 +31,15 @@ class Pret {
     }
 
     // Insérer le prêt
-    $stmt = $db->prepare("INSERT INTO ef_pret (date_pret, montant, duree, id_type_pret, id_compte_client) VALUES (?, ?, ?, ?, ?)");
+    $stmt = $db->prepare("INSERT INTO ef_pret (date_pret, montant, duree, id_type_pret, id_compte_client, delai, assurance) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
       $data->date_pret,
       $data->montant,
       $data->duree,
       $data->id_type_pret,
-      $data->id_compte_client
+      $data->id_compte_client,
+      $data->delai,
+      $data->assurance
     ]);
 
     return ['id' => $db->lastInsertId()];

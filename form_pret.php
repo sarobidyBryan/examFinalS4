@@ -15,6 +15,8 @@
   <input type="date" id="date_pret" required><br>
   <input type="number" id="montant" placeholder="Montant du prêt" step="0.01" required><br>
   <input type="number" id="duree" placeholder="Durée (mois)" required><br>
+  <input type="number" id="delai" min="0" placeholder="Delai (mois)" required><br>
+  <input type="number" id="assurance" max="100" min="0" placeholder="Taux(%)" required><br>
 
   <button type="submit">Créer le prêt</button>
 </form>
@@ -28,7 +30,9 @@ function creerPret(e) {
     `id_type_pret=${document.getElementById("id_type_pret").value}&` +
     `date_pret=${document.getElementById("date_pret").value}&` +
     `montant=${document.getElementById("montant").value}&` +
-    `duree=${document.getElementById("duree").value}`;
+    `duree=${document.getElementById("duree").value}&` +
+    `delai=${document.getElementById("delai").value}&` +
+    `assurance=${document.getElementById("assurance").value}`;
 
   ajax("POST", "/prets", data, (res) => {
     const msgDiv = document.getElementById("message");
