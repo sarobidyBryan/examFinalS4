@@ -19,10 +19,14 @@ class RemboursementPretController {
     public static function find_montant_interet_between_dates() {
         $db = getDB();
         $data = Flight::request()->data;
-        $id_pret = $data->id_pret ?? null;
-        $date_debut = $data->date_debut ?? null;
-        $date_fin = $data->date_fin ?? null;
-        $result = RemboursementPret::find_montant_interet_between($db, $id_pret, $date_debut, $date_fin);
+        // Accept both date_debut/date_fin and start_date/end_date for compatibility
+        $start = isset($data->start_date) ? $data->start_date : (isset($data->date_debut) ? $data->date_debut : null);
+        $end = isset($data->end_date) ? $data->end_date : (isset($data->date_fin) ? $data->date_fin : null);
+        if (!$start || !$end) {
+            Flight::json([]);
+            return;
+        }
+        $result = RemboursementPret::find_montant_interet_between($db, $start, $end);
         Flight::json($result);
     }
 }

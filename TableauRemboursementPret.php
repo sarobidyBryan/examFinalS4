@@ -31,6 +31,12 @@
         <tbody></tbody>
     </table>
 
+    <form id="pdfExportForm" method="get" action="export_remboursements_pdf.php" target="_blank" style="display:inline;">
+        <input type="hidden" name="start_date" id="pdf_start_date">
+        <input type="hidden" name="end_date" id="pdf_end_date">
+        <button type="submit">Export PDF</button>
+    </form>
+
     <canvas id="graphRemboursementPret" width="500" height="300" style="border:1px solid #ccc;"></canvas>
     <script src="ws/assets/js/base.js"></script>
     <script>
@@ -170,6 +176,18 @@
             });
         }
         loadAllRemboursements();
+
+
+        // Synchronise les dates du filtre avec le formulaire PDF
+        document.getElementById('filterForm').addEventListener('submit', function() {
+            document.getElementById('pdf_start_date').value = document.getElementById('start_date').value;
+            document.getElementById('pdf_end_date').value = document.getElementById('end_date').value;
+        });
+        // Initialiser les champs PDF au chargement
+        window.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('pdf_start_date').value = document.getElementById('start_date').value;
+            document.getElementById('pdf_end_date').value = document.getElementById('end_date').value;
+        });
     </script>
 </body>
 
