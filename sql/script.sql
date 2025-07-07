@@ -113,6 +113,7 @@ CREATE TABLE ef_remboursement_pret (
     montant_paye_base DECIMAL(15,2),
     montant_paye_interet DECIMAL(15,2),
     montant_restant DECIMAL(15,2),
+    assurance DECIMAL(15,2),
     id_pret INT,
     FOREIGN KEY (id_pret) REFERENCES ef_pret(id_pret)
 );
