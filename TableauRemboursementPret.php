@@ -32,25 +32,9 @@
     </table>
 
     <canvas id="graphRemboursementPret" width="500" height="300" style="border:1px solid #ccc;"></canvas>
-
+    <script src="ws/assets/js/base.js"></script>
     <script>
-        const apiBase = "http://localhost:80/examFinalS4/ws";
 
-        function ajax(method, url, data, callback) {
-            const xhr = new XMLHttpRequest();
-            xhr.open(method, apiBase + url, true);
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-            xhr.onreadystatechange = () => {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        callback(JSON.parse(xhr.responseText));
-                    } else {
-                        alert('Erreur lors de la récupération des données.');
-                    }
-                }
-            };
-            xhr.send(data);
-        }
 
         function renderTableAndChart(remboursements) {
             // Mettre à jour le tableau
