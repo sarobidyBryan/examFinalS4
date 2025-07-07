@@ -4,15 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter un Fond</title>
+    <link rel="stylesheet" href="ws/assets/css/ajout-fond.css">
+    <?php include('inc/head.php') ?>
 </head>
 
 <body>
-    <h2>Ajouter un Fond</h2>
-    <label for="montant">Montant :</label>
-    <input type="number" id="montant" name="montant" step="0.01" min="0" required>
-    <button onclick="ajoutMontant()">Ajouter</button>
-    <p id="message"></p>
-    <!-- <script src="ws\assets\js\base.js"></script> -->
+    <?php include('inc/navigation.php') ?>
+    <div class="main-content">
+        <h2>Ajouter un Fond</h2>
+
+        <label for="montant">Montant :</label>
+        <input type="number" id="montant" name="montant" step="0.01" min="0" required placeholder="Entrez un montant">
+
+        <button onclick="ajoutMontant()" class="btn-ajouter">
+            <i class="fa fa-plus"></i> Ajouter
+        </button>
+
+        <p id="message" class="message"></p>
+    </div>
+
+
     <script>
         const apiBase = "http://localhost:90/examFinalS4/ws";
 
@@ -26,24 +37,32 @@
                 }
             };
             xhr.send(data);
-            
+
         }
+
         function ajoutMontant() {
             const montant = document.getElementById("montant").value;
 
             const data = `montant=${encodeURIComponent(montant)}`;
-            
+
 
             // Correction de l'URL pour inclure le bon chemin relatif
-            ajax("POST", "/fond", data, (response) => { 
+            ajax("POST", "/fond", data, (response) => {
                 resetForm();
-                // La réponse est déjà un objet JSON, inutile de refaire JSON.parse
-                document.getElementById("message").textContent = response.message;
+                if (response.success) {
+                    document.getElementById("message").className = "success";
+                    document.getElementById("message").textContent = response.message;
+                } else {
+                    document.getElementById("message").className = "error";
+                    document.getElementById("message").textContent = response.error;
+                }
             });
         }
+
         function remplirFormulaire(e) {
             document.getElementById("montant").value = e.montant;
         }
+
         function resetForm() {
             document.getElementById("montant").value = "";
         }
