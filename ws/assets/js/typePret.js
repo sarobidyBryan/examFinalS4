@@ -18,25 +18,36 @@ function chargerSelects() {
 }
 
 function chargerTypePret() {
-    ajax("GET", "/type_pret", null, (data) => {
+    // Utiliser Promise.all pour attendre tous les appels AJAX
+    Promise.all([
+        new Promise(resolve => ajax("GET", "/calcul_taux_interet", null, resolve)),
+        new Promise(resolve => ajax("GET", "/definition_annee", null, resolve)),
+        new Promise(resolve => ajax("GET", "/type_pret", null, resolve))
+    ]).then(([taux_interets, annees, type_prets]) => {
         const tbody = document.querySelector("#table-type-pret tbody");
         tbody.innerHTML = "";
-        data.forEach(t => {
+        type_prets.forEach(t => {
+            const taux_interet = (taux_interets.find(item => item.id_calcul_ti === t.id_calcul_ti) || {}).description || "";
+            const annee = (annees.find(item => item.id_def_annee === t.id_def_annee) || {}).nombre_jours || "";
             const tr = document.createElement("tr");
             tr.innerHTML = `
-            <td>${t.id_type_pret}</td>
-            <td>${t.taux}</td>
-            <td>${t.duree_min}</td>
-            <td>${t.description}</td>
-            <td>${t.pret_min}</td>
-            <td>${t.pret_max}</td>
-            <td>${t.id_calcul_ti}</td>
-            <td>${t.id_def_annee}</td>
-            <td>
-              <button onclick='remplirFormulaire(${JSON.stringify(t)})'>✏️</button>
-              <button onclick='supprimerTypePret(${t.id_type_pret})'>🗑️</button>
-            </td>
-          `;
+                <td>${t.id_type_pret}</td>
+                <td>${t.taux}</td>
+                <td>${t.duree_min}</td>
+                <td>${t.description}</td>
+                <td>${t.pret_min}</td>
+                <td>${t.pret_max}</td>
+                <td>${taux_interet}</td>
+                <td>${annee}</td>
+                <td>
+                  <button id="edit-btn" onclick='remplirFormulaire(${JSON.stringify(t)})'>
+                    <i class="fa fa-edit"></i>
+                  </button>
+                  <button id="delete-btn" onclick='supprimerTypePret(${t.id_type_pret})'>
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </td>
+            `;
             tbody.appendChild(tr);
         });
     });
