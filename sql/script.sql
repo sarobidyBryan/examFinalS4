@@ -1,5 +1,5 @@
-CREATE TABLE etablissement_financier;
-USE etablissement_financier;
+CREATE DATABASE etablissement_financier;
+USE etablissement_financier
 
 -- 1. Client
 CREATE TABLE ef_client (
@@ -66,6 +66,8 @@ CREATE TABLE ef_type_pret (
     pret_max INT,
     id_calcul_ti INT,
     id_def_annee INT,
+    delai int,
+    assurance int,
     FOREIGN KEY (id_calcul_ti) REFERENCES ef_calcul_taux_interet(id_calcul_ti),
     FOREIGN KEY (id_def_annee) REFERENCES ef_definition_annee(id_def_annee)
 );
@@ -108,7 +110,8 @@ CREATE TABLE ef_mouvement_banque (
 CREATE TABLE ef_remboursement_pret (
     id_remboursement_pret INT AUTO_INCREMENT PRIMARY KEY,
     date_remboursement DATE,
-    montant_paye DECIMAL(15,2),
+    montant_paye_base DECIMAL(15,2),
+    montant_paye_interet DECIMAL(15,2),
     montant_restant DECIMAL(15,2),
     id_pret INT,
     FOREIGN KEY (id_pret) REFERENCES ef_pret(id_pret)
