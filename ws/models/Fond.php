@@ -3,6 +3,10 @@ require_once __DIR__ . '/../db.php';
 
 class Fond{
     public static function create($data) {
+        $montant = $data['montant'] ?? 0;
+        if($montant <= 0) {
+            throw new Exception("Le montant doit être supérieur à zéro.");
+        }
         $db = getDB();
         try {
             $db->beginTransaction();
