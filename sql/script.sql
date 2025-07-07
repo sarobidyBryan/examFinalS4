@@ -1,5 +1,5 @@
 CREATE TABLE etablissement_financier;
-USE etablissement_financier
+USE etablissement_financier;
 
 -- 1. Client
 CREATE TABLE ef_client (
