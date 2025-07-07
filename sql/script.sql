@@ -66,8 +66,6 @@ CREATE TABLE ef_type_pret (
     pret_max INT,
     id_calcul_ti INT,
     id_def_annee INT,
-    delai int,
-    assurance int,
     FOREIGN KEY (id_calcul_ti) REFERENCES ef_calcul_taux_interet(id_calcul_ti),
     FOREIGN KEY (id_def_annee) REFERENCES ef_definition_annee(id_def_annee)
 );
@@ -80,6 +78,8 @@ CREATE TABLE ef_pret (
     duree INT,
     id_type_pret INT,
     id_compte_client INT,
+    delai int,
+    assurance int,
     FOREIGN KEY (id_type_pret) REFERENCES ef_type_pret(id_type_pret),
     FOREIGN KEY (id_compte_client) REFERENCES ef_compte_client(id_compte_client)
 );
