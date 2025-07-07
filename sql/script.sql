@@ -1,5 +1,10 @@
+<<<<<<< Updated upstream
 CREATE TABLE etablissement_financier;
 USE etablissement_financier;
+=======
+CREATE DATABASE etablissement_financier;
+USE etablissement_financier
+>>>>>>> Stashed changes
 
 -- 1. Client
 CREATE TABLE ef_client (
