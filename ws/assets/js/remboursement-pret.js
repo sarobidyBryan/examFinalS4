@@ -115,7 +115,6 @@ function filterData(start, end) {
 }
 
 const canvas = document.getElementById('graphRemboursementPret');
-canvas.style.display = 'block'; // Afficher le canvas
 const ctx = canvas.getContext('2d');
 
 // Initialiser le graphique et le tableau avec les données actuelles (requête AJAX pour cohérence)
@@ -137,6 +136,7 @@ loadAllRemboursements();
 
 // Synchronise les dates du filtre avec le formulaire PDF
 document.getElementById('filterForm').addEventListener('submit', function () {
+    canvas.style.display = 'block'; // Afficher le canvas
     document.getElementById('pdf_start_date').value = document.getElementById('start_date').value;
     document.getElementById('pdf_end_date').value = document.getElementById('end_date').value;
 });
