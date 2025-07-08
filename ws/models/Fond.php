@@ -2,6 +2,16 @@
 require_once __DIR__ . '/../db.php';
 
 class Fond{
+    // Retourne le solde du fond à une date donnée (avant ou à cette date)
+    public static function getFondAtDate($date) {
+        $db = getDB();
+        // On suppose que les mouvements sont dans ef_mouvement_banque (dépôts, retraits)
+        // et que le solde initial est 0 si aucun mouvement
+        $stmt = $db->prepare("SELECT SUM(montant) as total FROM ef_mouvement_banque WHERE date_mouvement <= ? AND id_compte_banque = 1");
+        $stmt->execute([$date]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row && $row['total'] !== null ? floatval($row['total']) : 0;
+    }
     public static function create($data) {
         $montant = $data['montant'] ?? 0;
         $date_de_depot = $data['dateDeDepot'] ?? date('Y-m-d');
