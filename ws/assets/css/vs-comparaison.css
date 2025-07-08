@@ -31,14 +31,7 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, var(--background-primary) 0%, #e8ecf4 100%);
-    min-height: 100vh;
-    padding: 40px 20px;
-    color: var(--text-primary);
-    line-height: 1.6;
-}
+
 
 /* Container principal */
 .comparison-container {

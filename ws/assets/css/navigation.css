@@ -14,7 +14,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 250px;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #2e3b4e;
     color: #ffffff;
     padding-top: 30px;
