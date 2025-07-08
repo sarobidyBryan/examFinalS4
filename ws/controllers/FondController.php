@@ -18,8 +18,9 @@ class FondController
         try {
             $result = Fond::create($data);
             $id = $result['id'] ?? null;
+            $dateDeDepot = $result['dateDeDepot'] ?? null;
             $solde = $result['solde'] ?? null;
-            Flight::json(['success' => true, 'message' => 'Fond ajouté', 'id' => $id,'solde' => $solde]);
+            Flight::json(['success' => true, 'message' => 'Fond ajouté', 'id' => $id,'solde' => $solde, 'dateDeDepot' => $dateDeDepot]);
         } catch (Exception $e) {
             Flight::json(['success' => false, 'error' => $e->getMessage()]);
         }

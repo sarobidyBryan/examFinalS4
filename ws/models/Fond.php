@@ -35,6 +35,7 @@ class Fond{
             $db->commit();
             $result = [];
             $result['id'] = $id_mouvement;
+            $result['dateDeDepot'] = $date_de_depot;
             $result['solde'] = $solde_actuel;
             return $result;
         } catch (Exception $e) {
