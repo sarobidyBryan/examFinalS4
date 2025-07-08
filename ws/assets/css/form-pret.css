@@ -1,0 +1,153 @@
+.main-content {
+    padding: 40px;
+    background-color: #ffffff;
+    font-family: "Segoe UI", sans-serif;
+    color: #333;
+    min-height: 100vh;
+}
+
+.main-content h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #2e3b4e;
+}
+
+/* Zone de message */
+#message {
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #c62828; /* couleur rouge pour les erreurs éventuelles */
+}
+
+/* Formulaire */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    gap: 15px;
+}
+
+form select,
+form input[type="number"],
+form input[type="date"] {
+    padding: 10px 14px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+form select:focus,
+form input:focus {
+    border-color: #4da3ff;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Bouton principal */
+form button[type="submit"] {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #4da3ff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+    background-color: #357ec7;
+}
+
+/* Résultat simulation */
+#simulation-resultat {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f3f8ff;
+    border: 1px solid #4da3ff;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+/* Bouton de validation final */
+#bouton-valider {
+    margin-top: 20px;
+}
+
+#bouton-valider button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #2e7d32;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#bouton-valider button:hover {
+    background-color: #1b5e20;
+}
+
+#simulation-resultat {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+#simulation-resultat table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+#simulation-resultat th,
+#simulation-resultat td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+#simulation-resultat th {
+    background-color: #2e3b4e;
+    color: white;
+    font-weight: 600;
+}
+
+#simulation-resultat tr:nth-child(even) {
+    background-color: #f0f8ff;
+}
+
+#simulation-resultat tr:hover {
+    background-color: #e2f0ff;
+}
+
+#simulation-resultat p {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+#export-sim-pdf {
+    margin-top: 25px;
+}
+
+#export-sim-pdf button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #8e24aa; /* Violet doux pour différencier du bouton "Valider" */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#export-sim-pdf button:hover {
+    background-color: #6a1b9a;
+}

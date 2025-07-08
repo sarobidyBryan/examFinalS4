@@ -12,7 +12,7 @@ class Fond{
             $db->beginTransaction();
             
             // Insérer dans ef_mouvement_banque
-            $stmt = $db->prepare("INSERT INTO ef_mouvement_banque (date_mouvement, montant, id_compte_banque, id_type_mouvement) VALUES (?, ?, 1, 1)");
+            $stmt = $db->prepare("INSERT INTO ef_mouvement_banque (date_mouvement, montant, id_compte_banque, id_type_mouvement) VALUES (?, ?, 1, 2)");
             $stmt->execute([date('Y-m-d'), $data['montant']]);
             $id_mouvement = $db->lastInsertId();
 
