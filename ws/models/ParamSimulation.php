@@ -49,11 +49,7 @@ class ParamSimulation{
 
        
     // Insérer le prêt
-<<<<<<< Updated upstream
-    $stmt = $db->prepare("INSERT INTO ef_param_simulation (date_pret, montant, duree, id_type_pret, id_compte_client, delai, assurance,date_simulation,description) VALUES (?, ?, ?, ?, ?, ?, ?,?,?)");
-=======
-    $stmt = $db->prepare("INSERT INTO ef_param_simulation (date_pret, montant, duree, id_type_pret, id_compte_client, delai, assurance,date_simulation,description) VALUES (?, ?, ?, ?, ?, ?,?,?,?)");
->>>>>>> Stashed changes
+    $stmt = $db->prepare("INSERT INTO ef_param_simulation (date_pret, montant, duree, id_type_pret, id_compte_client, delai, assurance,date_simulation,taux,description) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)");
     $stmt->execute([
       $data->date_pret,
       $data->montant,
@@ -62,11 +58,8 @@ class ParamSimulation{
       $data->id_compte_client,
       $data->delai,
       $data->assurance,
-<<<<<<< Updated upstream
-      $data->date_simulation,
-=======
       date('Y-m-d'),
->>>>>>> Stashed changes
+      $data->taux,
       $data->description
     ]);
     

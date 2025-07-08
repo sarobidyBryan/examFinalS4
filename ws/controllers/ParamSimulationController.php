@@ -13,10 +13,6 @@ class ParamSimulationController
 
     public static function create($data)
     {
-<<<<<<< Updated upstream
-        $data = ParamSimulation::create($data);
-        Flight::json($data);
-=======
         $data = Flight::request()->data;
         $result = ParamSimulation::create($data);
 
@@ -29,7 +25,6 @@ class ParamSimulationController
                 'id' => $result
             ]);
         }
->>>>>>> Stashed changes
     }
 
 
