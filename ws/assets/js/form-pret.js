@@ -115,7 +115,6 @@ function validerPret() {
 // 🔁 Cette fonction lit les lignes déjà affichées dans le tableau et les envoie
 function rembourserPret(idPret) {
     const data = { id_pret: idPret };
-    console.log("idddd  " + data.id_pret);
     ajax("POST", "/remboursement_pret", JSON.stringify(data), (res) => {
         const msgDiv = document.getElementById("message");
         msgDiv.innerHTML += res.error

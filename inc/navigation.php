@@ -5,6 +5,6 @@
         <li><a href="type-pret.php"><i class="fa fa-list-alt"></i> Creation type de prêt</a></li>
         <li><a href="tableau-remboursement-pret.php"><i class="fa fa-table"></i> Tableau remboursement prêt</a></li>
         <li><a href="form-pret.php"><i class="fa fa-plus"></i> Ajouter un prêt</a></li>
-        <!-- <li><a href="gestion_pret.php"><i class="fa fa-book"></i> Gestion des prêts</a></li> -->
+        <li><a href="liste-prets.php"><i class="fa fa-list"></i> Liste des prêts</a></li>
     </ul>
 </div>
