@@ -2,7 +2,7 @@ function ajoutMontant() {
     const montant = document.getElementById("montant").value;
 
     const data = `montant=${encodeURIComponent(montant)}`;
-    
+
     ajax("POST", "/fond", data, (response) => {
         resetForm();
         if (response.success) {
@@ -21,7 +21,7 @@ function resetForm() {
 }
 
 function remplirSolde() {
-    ajax("GET", "/fond/solde", "", (response) => {
+    ajax("GET", "/fond/montant", "", (response) => {
         if (response.success) {
             document.getElementById("solde").textContent = Number(response.solde).toLocaleString('fr-FR').replace(/\u00A0/g, ' ') + " Ar";
         } else {

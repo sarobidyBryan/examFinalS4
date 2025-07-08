@@ -41,7 +41,7 @@
             </thead>
             <tbody></tbody>
         </table>
-
+        <br>
         <!-- Export PDF -->
         <form id="pdfExportForm" method="get" action="export_remboursements_pdf.php" target="_blank" style="display:inline;">
             <input type="hidden" name="start_date" id="pdf_start_date">

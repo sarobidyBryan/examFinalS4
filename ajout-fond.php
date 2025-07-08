@@ -1,3 +1,4 @@
+<?php include('ws/helpers/Utils.php'); ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -11,11 +12,12 @@
 <body>
     <?php include('inc/navigation.php') ?>
     <div class="main-content">
+        <p id="solde-section"><strong>Fond de départ actuel : </strong><span id="solde"></span></p>
         <h2>Ajouter un Fond</h2>
-        <p id="solde-section"><strong>Fond actuel : </strong><span id="solde"></span></p>
         <label for="montant">Montant :</label>
         <input type="number" id="montant" name="montant" step="0.01" min="0" required placeholder="Entrez un montant">
-
+        <label for="dateDeDepot">Date de dépot</label>
+        <input type="date" id="dateDeDepot" name="dateDeDepot" required>
         <button onclick="ajoutMontant()" class="btn-ajouter">
             <i class="fa fa-plus"></i> Ajouter
         </button>

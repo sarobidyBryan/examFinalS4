@@ -3,10 +3,10 @@ require_once __DIR__ . '/../models/Fond.php';
 
 class FondController
 {
-    public static function solde()
+    public static function fond()
     {
         try {
-            $solde = Fond::getSolde();
+            $solde = Fond::getFond();
             Flight::json(['success' => true, 'solde' => $solde]);
         } catch (Exception $e) {
             Flight::json(['success' => false, 'error' => $e->getMessage()]);

@@ -83,3 +83,22 @@ input[type="number"]:focus {
     display: flex;
     align-items: center;
 }
+
+input[type="number"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+input[type="number"]:focus,
+input[type="date"]:focus {
+    border-color: #4da3ff;
+    background-color: #fff;
+    outline: none;
+}
