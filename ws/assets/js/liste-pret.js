@@ -41,5 +41,5 @@ function renderPretTable(response) {
 }
 
 function showDetails(idPret) {
-    window.location.href = `details_pret.php?id=${idPret}`;
+    window.location.href = `details-pret.php?id=${idPret}`;
 }
