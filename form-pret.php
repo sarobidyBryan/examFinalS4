@@ -15,6 +15,7 @@
     <h2>Créer un prêt</h2>
     <div id="message"></div>
 
+    
     <form onsubmit="simulerPaiement(event)">
       <label for="id_compte_client">Compte client</label>
       <select id="id_compte_client" required>
