@@ -11,26 +11,30 @@ class ParamSimulationController
         Flight::json($data);
     }
 
-    public static function create($data)
-    {
-        $data = Flight::request()->data;
-        $result = ParamSimulation::create($data);
+ public static function create()
+  {
+    $data = Flight::request()->data;
 
-        if (is_array($result) && isset($result['error'])) {
-            Flight::json(['success' => false, 'error' => $result['error']]);
-        } else {
-            Flight::json([
-                'success' => true,
-                'message' => 'Simulation créée avec succès.',
-                'id' => $result
-            ]);
-        }
+    // Validation côté backend
+    if (!$data->id_compte_client || !$data->id_type_pret || !$data->date_pret || !$data->montant || !$data->duree) {
+      Flight::json(['error' => 'Tous les champs sont obligatoires.']);
+      return;
     }
 
+    $result = ParamSimulation::create($data);
 
-    public static function get($id)
+    if (isset($result['error'])) {
+      Flight::json(['error' => $result['error']]);
+    } else {
+      Flight::json(['message' => 'simulation créé avec succès.', 'id' => $result['id']]);
+    }
+  }
+
+
+    public static function get()
     {
-        $param = ParamSimulation::get($id);
+        $data = Flight::request()->data;
+        $param = ParamSimulation::get($data);
         if ($param) {
             Flight::json($param);
         } else {

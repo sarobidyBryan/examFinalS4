@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../db.php';
 
 class ParamSimulation{
     public static function getAll($db) {
@@ -14,14 +15,14 @@ class ParamSimulation{
     }
 
     public static function create($data) {
-        $db = getDB();
-    $id_banque=1;
+    $db = getDB();
+    $id_banque = 1;
     $soldeData = CompteBanque::getSoldeAtDate($id_banque, $data->date_pret);
     $solde_banque = $soldeData['solde'];
 
     if ($solde_banque <= $data->montant) {
-        return ['error' => "Solde insuffisant. Disponible: $solde_banque, requis: $data->montant"];
-    } 
+      return ['error' => "Solde insuffisant. Disponible: $solde_banque, requis: $data->montant"];
+    }
     // Vérifier existence du compte client
     $stmt = $db->prepare("SELECT 1 FROM ef_compte_client WHERE id_compte_client = ?");
     $stmt->execute([$data->id_compte_client]);
@@ -47,9 +48,9 @@ class ParamSimulation{
       return ['error' => 'Durée minimale requise : ' . $typePret['duree_min'] . ' mois.'];
     }
 
-       
+  
     // Insérer le prêt
-    $stmt = $db->prepare("INSERT INTO ef_param_simulation (date_pret, montant, duree, id_type_pret, id_compte_client, delai, assurance,date_simulation,taux,description) VALUES (?, ?, ?, ?, ?, ?,?,?,?,?)");
+    $stmt = $db->prepare("INSERT INTO ef_param_simulation (date_pret, montant, duree, id_type_pret, id_compte_client, delai, assurance,description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
     $stmt->execute([
       $data->date_pret,
       $data->montant,
@@ -58,18 +59,18 @@ class ParamSimulation{
       $data->id_compte_client,
       $data->delai,
       $data->assurance,
-      date('Y-m-d'),
-      $data->taux,
       $data->description
     ]);
-    
+  
+       
+   
     return ['id' => $db->lastInsertId()];
     }
 
-    public static function get($id){
+    public static function get($data){
         $db = getDB();
         $stmt = $db->prepare("SELECT * FROM ef_param_simulation WHERE id_param_simulation = ?");
-        $stmt->execute([$id]);
+        $stmt->execute([$data->id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
         
         if (!$result) {

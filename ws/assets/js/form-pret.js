@@ -30,7 +30,7 @@ function simulerPaiement(e) {
         `duree=${document.getElementById("duree").value}&` +
         `delai=${document.getElementById("delai").value}&` +
         `assurance=${document.getElementById("assurance").value}&` +
-        `taux=${document.getElementById("id_type_pret")+5}`;
+         `taux=${document.getElementById("id_type_pret").selectedOptions[0].dataset.taux}`;
 
     ajax("POST", "/simuler-pret", data, (res) => {
         const div = document.getElementById("simulation-resultat");
@@ -124,7 +124,7 @@ function rembourserPret(idPret) {
 }
 
 document.getElementById("btnSaveSimulation").addEventListener("click", () => {
-    const data =
+ const data =
         `id_compte_client=${document.getElementById("id_compte_client").value}&` +
         `id_type_pret=${document.getElementById("id_type_pret").value}&` +
         `date_pret=${document.getElementById("date_pret").value}&` +
@@ -132,17 +132,17 @@ document.getElementById("btnSaveSimulation").addEventListener("click", () => {
         `duree=${document.getElementById("duree").value}&` +
         `delai=${document.getElementById("delai").value}&` +
         `assurance=${document.getElementById("assurance").value}&` +
-        `description=${encodeURIComponent(document.getElementById("description").value)}`;
-
+        `taux=${document.getElementById("id_type_pret").selectedOptions[0].dataset.taux}&`+
+        `description=${(document.getElementById("description").value)}`;
+    console.log("data: " + data);
     ajax("POST", "/param", data, (res) => {
-        const msgDiv = document.getElementById("message");
-
+         const msgDiv = document.getElementById("message");
         if (res.error) {
-            msgDiv.innerHTML = `<p style="color:red;"><strong>Erreur :</strong> ${res.error}</p>`;
-        } else if (res.success) {
-            msgDiv.innerHTML = `<p style="color:green;"><strong>✔</strong> ${res.message} (ID: ${res.id})</p>`;
+            msgDiv.innerHTML = `<p style="color:red">${res.error}</p>`;
         } else {
-            msgDiv.innerHTML = `<p style="color:orange;">Une réponse inattendue a été reçue.</p>`;
+            msgDiv.innerHTML = `<p style="color:green">${res.message}</p>`;
+
+ 
         }
     });
 

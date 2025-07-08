@@ -13,6 +13,7 @@ class SimulationPretController {
             return;
         }
 
+        
         $montant = floatval($data['montant']);
         $taux = floatval($data['taux']);
         $duree = intval($data['duree']);
