@@ -132,3 +132,22 @@ form button[type="submit"]:hover {
     font-weight: bold;
     color: #333;
 }
+
+#export-sim-pdf {
+    margin-top: 25px;
+}
+
+#export-sim-pdf button {
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: #8e24aa; /* Violet doux pour différencier du bouton "Valider" */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#export-sim-pdf button:hover {
+    background-color: #6a1b9a;
+}

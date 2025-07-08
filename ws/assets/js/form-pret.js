@@ -71,8 +71,22 @@ function simulerPaiement(e) {
     </table>`;
         div.innerHTML = html;
         document.getElementById("bouton-valider").style.display = "block";
+        // PDF export button (must use the latest res)
+        let oldExport = document.getElementById('export-sim-pdf');
+        if (oldExport) oldExport.remove();
+        const exportForm = document.createElement('form');
+        exportForm.method = 'post';
+        exportForm.action = 'export_simulation_pdf.php';
+        exportForm.target = '_blank';
+        exportForm.id = 'export-sim-pdf';
+        exportForm.style.marginTop = '10px';
+        exportForm.innerHTML = `
+          <input type=\"hidden\" name=\"paiements\" value='${JSON.stringify(res.paiements)}'>
+          <input type=\"hidden\" name=\"totaux\" value='${JSON.stringify(res.totaux)}'>
+          <button type=\"submit\">Exporter la simulation en PDF</button>
+        `;
+        div.appendChild(exportForm);
     });
-
 }
 
 function validerPret() {
