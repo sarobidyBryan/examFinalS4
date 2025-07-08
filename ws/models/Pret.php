@@ -6,13 +6,13 @@ class Pret
   public static function create($data)
   {
     $db = getDB();
-    $id_banque=1;
+    $id_banque = 1;
     $soldeData = CompteBanque::getSoldeAtDate($id_banque, $data->date_pret);
     $solde_banque = $soldeData['solde'];
 
     if ($solde_banque <= $data->montant) {
-        return ['error' => "Solde insuffisant. Disponible: $solde_banque, requis: $data->montant"];
-    } 
+      return ['error' => "Solde insuffisant. Disponible: $solde_banque, requis: $data->montant"];
+    }
     // Vérifier existence du compte client
     $stmt = $db->prepare("SELECT 1 FROM ef_compte_client WHERE id_compte_client = ?");
     $stmt->execute([$data->id_compte_client]);
@@ -38,7 +38,7 @@ class Pret
       return ['error' => 'Durée minimale requise : ' . $typePret['duree_min'] . ' mois.'];
     }
 
-       $stmt = $db->prepare("INSERT INTO ef_mouvement_banque (date_mouvement, montant, id_compte_banque, id_type_mouvement)
+    $stmt = $db->prepare("INSERT INTO ef_mouvement_banque (date_mouvement, montant, id_compte_banque, id_type_mouvement)
                         VALUES (?, ?, ?, ?)");
     $stmt->execute([
       $data->date_pret,
@@ -57,29 +57,45 @@ class Pret
       $data->delai,
       $data->assurance
     ]);
-
- 
-
-
-
     return ['id' => $db->lastInsertId()];
   }
 
-  public static function getAll($db){
+  public static function getAll($db)
+  {
     $stmt = $db->query("SELECT * FROM ef_pret");
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public static function findBetweenDates($start_date, $end_date) {
+  public static function findBetweenDates($start_date, $end_date)
+  {
     $db = getDB();
     $stmt = $db->prepare("SELECT * FROM ef_pret WHERE date_pret BETWEEN ? AND ?");
     $stmt->execute([$start_date, $end_date]);
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
   }
 
-  public static function findById($db, $id) {
+  public static function findById($db, $id)
+  {
     $stmt = $db->prepare("SELECT * FROM ef_pret WHERE id_pret = ?");
     $stmt->execute([$id]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
+
+  public static function createSimlulation($data)
+  {
+    $db = getDB();
+    $stmt = $db->prepare("INSERT INTO ef_param_simulation(date_pret,montant,duree,id_type_pret,id_compte_client,delai,assurance,date_simulation,description) values (?,?,?,?,?,?,?,?,?)");
+    $stmt->execute([
+      $data['date_pret'],
+      $data['montant'],
+      $data['duree'],
+      $data['id_type_pret'],
+      $data['id_compte_client'],
+      $data['delai'],
+      $data['assurance'],
+      date('Y-m-d'), // date_simulation = maintenant
+      isset($data['description']) ? $data['description'] : null
+    ]);
+    return $db->lastInsertId();
   }
 }

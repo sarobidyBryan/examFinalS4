@@ -1,0 +1,84 @@
+.main-content {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 30px 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-family: "Segoe UI", sans-serif;
+    color: #333;
+}
+
+.main-content h2 {
+    text-align: center;
+    color: #2e3b4e;
+    margin-bottom: 30px;
+}
+
+.main-content label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.main-content input[type="text"],
+.main-content input[type="number"],
+.main-content input[type="date"],
+.main-content select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 14px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease;
+}
+
+.main-content input:focus,
+.main-content select:focus {
+    border-color: #4da3ff;
+    background-color: #fff;
+    outline: none;
+}
+
+.main-content button {
+    margin-top: 25px;
+    width: 100%;
+    background-color: #4da3ff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.main-content button:hover {
+    background-color: #357ec7;
+}
+
+#message {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+#message p {
+    padding: 10px;
+    border-radius: 6px;
+}
+
+#message p.success {
+    background-color: #e6f9e8;
+    color: #2e7d32;
+    border: 1px solid #b2dfdb;
+}
+
+#message p.error {
+    background-color: #ffeaea;
+    color: #c62828;
+    border: 1px solid #f44336;
+}
