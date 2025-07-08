@@ -12,7 +12,21 @@
 <body>
     <?php include('inc/navigation.php') ?>
     <div class="main-content">
-        <p id="solde-section"><strong>Fond de départ actuel : </strong><span id="solde"></span></p>
+        <h2>Solde de la banque à une date donnée</h2>
+
+        <form id="form-solde">
+            <label for="date_solde">Date :</label>
+            <input type="date" id="date_solde" required>
+            <button type="submit" class="btn-ajouter">Afficher le solde</button>
+        </form>
+
+        <p id="solde-section" style="margin-top: 1em;">
+            <strong>Solde à la date donnée : </strong>
+            <span id="solde">-</span>
+        </p>
+
+        <div id="message"></div>
+
         <h2>Ajouter un Fond</h2>
         <label for="montant">Montant :</label>
         <input type="number" id="montant" name="montant" step="0.01" min="0" required placeholder="Entrez un montant">
