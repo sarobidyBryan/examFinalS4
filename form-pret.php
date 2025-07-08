@@ -15,16 +15,16 @@
     <h2>Créer un prêt</h2>
     <div id="message"></div>
 
-    
+
     <form onsubmit="simulerPaiement(event)">
       <label for="id_compte_client">Compte client</label>
       <select id="id_compte_client" required>
-      <option value="">-- Compte client --</option>
+        <option value="">-- Compte client --</option>
       </select>
 
       <label for="id_type_pret">Type de prêt</label>
       <select id="id_type_pret" required>
-      <option value="">-- Type de prêt --</option>
+        <option value="">-- Type de prêt --</option>
       </select>
 
       <label for="date_pret">Date du prêt</label>
@@ -42,8 +42,15 @@
       <label for="assurance">Assurance (%)</label>
       <input type="number" id="assurance" max="100" min="0" placeholder="Ex: 2" required>
 
+      <label for="description">Description (si pour enregistrer simulation)</label>
+      <input type="text" id="description" placeholder="Ex: prêt urgent 12 mois">
+
       <button type="submit">Simuler le prêt</button>
     </form>
+    <div class="message"></div>
+    <button id="btnSaveSimulation" style="margin-top: 15px;">
+      Enregistrer simulation simple
+    </button>
 
     <div id="simulation-resultat"></div>
     <div id="bouton-valider" style="display:none;">
