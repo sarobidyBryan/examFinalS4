@@ -13,5 +13,6 @@ require 'routes/simulation_pret_routes.php';
 require 'routes/compte_banque_routes.php';
 require 'routes/remboursement_pret_routes.php';
 require 'routes/import_pret_routes.php';
+require 'routes/param_simulation_routes.php';
 
 Flight::start();

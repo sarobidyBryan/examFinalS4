@@ -6,6 +6,6 @@
         <li><a href="tableau-remboursement-pret.php"><i class="fa fa-table"></i> Tableau remboursement prêt</a></li>
         <li><a href="form-pret.php"><i class="fa fa-plus"></i> Ajouter un prêt</a></li>
         <li><a href="liste-prets.php"><i class="fa fa-list"></i> Liste des prêts</a></li>
-        <li><a href="form-simulation.php"><i class="fa fa-form"></i> Formulaire simulation</a></li>
+        <li><a href="form-simulation.php"><i class="fa fa-wpforms"></i> Formulaire simulation</a></li>
     </ul>
 </div>

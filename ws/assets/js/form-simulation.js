@@ -28,9 +28,14 @@ function ajouterSimulation() {
         `montant=${document.getElementById("montant").value}&` +
         `duree=${document.getElementById("duree").value}&` +
         `delai=${document.getElementById("delai").value}&` +
+        `id_type_pret=${document.getElementById("id_type_pret").value}&` +
+        `id_compte_client=${document.getElementById("id_compte_client").value}&` +
         `assurance=${document.getElementById("assurance").value}&` +
+        `description=${document.getElementById("description").value}&` +
         `taux=${document.getElementById("id_type_pret").selectedOptions[0].dataset.taux}`;
-    ajax("POST", "/pret/ajout-simulation", data, (res) => {
+        console.log(data);
+
+    ajax("POST", "/param", data, (res) => {
         const msgDiv = document.getElementById("message");
 
         if (res.error) {

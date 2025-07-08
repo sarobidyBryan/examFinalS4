@@ -11,10 +11,15 @@ class ParamSimulationController
         Flight::json($data);
     }
 
-    public static function create($data)
+    public static function create()
     {
-        $data = ParamSimulation::create($data);
-        Flight::json($data);
+        $data = Flight::request()->data;
+        $result = ParamSimulation::create($data);
+        if (isset($result['error'])) {
+            Flight::json(['success' => false, 'error' => 'insertion de simulation non réussi']);
+        } else {
+            Flight::json(['success' => true, 'message' => 'Simulation créé avec succès.', 'id' => $result]);
+        }
     }
 
     public static function get($id)

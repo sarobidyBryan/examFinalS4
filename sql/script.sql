@@ -141,6 +141,7 @@ CREATE TABLE ef_param_simulation (
     delai int,
     assurance int,
     date_simulation DATE,
+    taux decimal(15,2),
     description VARCHAR(255),
     FOREIGN KEY (id_type_pret) REFERENCES ef_type_pret(id_type_pret),
     FOREIGN KEY (id_compte_client) REFERENCES ef_compte_client(id_compte_client)
