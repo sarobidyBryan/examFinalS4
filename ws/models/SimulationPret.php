@@ -19,18 +19,16 @@ class SimulationPret {
         $total_mensualite = 0;
 
         for ($mois = 1; $mois <= $duree; $mois++) {
-            $assurance_mensuelle = $assurance_total / $duree;
             $interet = 0;
             $amortissement = 0;
             $mens = 0;
             $total_a_payer = 0;
 
             if ($mois <= $delai) {
-                // Délai : pas de remboursement
                 $mens = 0;
                 $assurance_mensuelle = 0;
-
             } else {
+                $assurance_mensuelle = $assurance_total / $duree;
                 $interet = $reste * $taux_mensuel;
                 $amortissement = $mensualite - $interet;
                 $reste -= $amortissement;

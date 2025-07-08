@@ -108,9 +108,27 @@ function validerPret() {
 
   ajax("POST", "/prets", data, (res) => {
     const msgDiv = document.getElementById("message");
-    msgDiv.innerHTML = res.error 
-      ? `<p style="color:red">${res.error}</p>` 
-      : `<p style="color:green">${res.message}</p>`;
+    if (res.error) {
+      msgDiv.innerHTML = `<p style="color:red">${res.error}</p>`;
+    } else {
+      msgDiv.innerHTML = `<p style="color:green">${res.message}</p>`;
+      const idPret = res.id;
+      console.log("idpret   " + idPret)
+      rembourserPret(idPret);  // appel ici
+    }
   });
 }
+
+// 🔁 Cette fonction lit les lignes déjà affichées dans le tableau et les envoie
+function rembourserPret(idPret) {
+  const data = { id_pret: idPret };
+  console.log("idddd  " + data.id_pret);
+  ajax("POST", "/remboursement_pret/create", JSON.stringify(data), (res) => {
+    const msgDiv = document.getElementById("message");
+    msgDiv.innerHTML += res.error 
+      ? `<p style="color:red">${res.error}</p>` 
+      : `<p style="color:green">${res.message}</p>`;
+  }, true); // true = JSON
+}
+
 </script>
