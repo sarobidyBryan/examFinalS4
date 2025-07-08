@@ -118,6 +118,7 @@
       div.appendChild(exportForm);
     });
 
+    
 
     function validerPret() {
       const dataPret = new URLSearchParams({
