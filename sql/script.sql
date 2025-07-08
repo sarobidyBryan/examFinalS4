@@ -130,3 +130,18 @@ CREATE TABLE ef_historique_status_pret (
     FOREIGN KEY (id_status_pret) REFERENCES ef_status_pret(id_status_pret),
     FOREIGN KEY (id_pret) REFERENCES ef_pret(id_pret)
 );
+
+CREATE TABLE ef_param_simulation (
+    id_param_simulation INT AUTO_INCREMENT PRIMARY KEY,
+    date_pret DATE,
+    montant DECIMAL(15,2),
+    duree INT,
+    id_type_pret INT,
+    id_compte_client INT,
+    delai int,
+    assurance int,
+    date_simulation DATE,
+    description VARCHAR(255),
+    FOREIGN KEY (id_type_pret) REFERENCES ef_type_pret(id_type_pret),
+    FOREIGN KEY (id_compte_client) REFERENCES ef_compte_client(id_compte_client)
+);
