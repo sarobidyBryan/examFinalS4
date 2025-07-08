@@ -7,8 +7,7 @@ class SimulationPretController {
 
         if (
             empty($data['montant']) || empty($data['taux']) ||
-            empty($data['duree']) /**|| empty($data['delai'])**/ ||
-            empty($data['assurance']) || empty($data['date_pret'])
+            empty($data['duree'])  || empty($data['date_pret'])
         ) {
             Flight::json(['error' => 'Tous les champs sont requis.']);
             return;
