@@ -12,7 +12,7 @@
     <?php include('inc/navigation.php') ?>
     <div class="main-content">
         <h2>Ajouter un Fond</h2>
-
+        <p id="solde-section"><strong>Fond actuel : </strong><span id="solde"></span></p>
         <label for="montant">Montant :</label>
         <input type="number" id="montant" name="montant" step="0.01" min="0" required placeholder="Entrez un montant">
 

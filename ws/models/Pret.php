@@ -64,4 +64,22 @@ class Pret
 
     return ['id' => $db->lastInsertId()];
   }
+
+  public static function getAll($db){
+    $stmt = $db->query("SELECT * FROM ef_pret");
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function findBetweenDates($start_date, $end_date) {
+    $db = getDB();
+    $stmt = $db->prepare("SELECT * FROM ef_pret WHERE date_pret BETWEEN ? AND ?");
+    $stmt->execute([$start_date, $end_date]);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+  }
+
+  public static function findById($db, $id) {
+    $stmt = $db->prepare("SELECT * FROM ef_pret WHERE id_pret = ?");
+    $stmt->execute([$id]);
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+  }
 }

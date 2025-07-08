@@ -4,7 +4,7 @@ INSERT INTO ef_type_mouvement (description) VALUES
 ('sortie'),
 ('entree');
 
-insert into ef_compte_banque (solde_actuel,solde_precedent) values (0,0,1);
+insert into ef_compte_banque (solde_actuel,solde_precedent,id_banque) values (0,0,1);
 
 INSERT INTO ef_status_pret (description) VALUES 
 ('en cours'),

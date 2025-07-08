@@ -24,12 +24,11 @@ class RemboursementPret{
         return ['id' => $db->lastInsertId()];
     }
 
-    public static function find_montant_interet_between($db, $id_pret, $start_date, $end_date) {
-        $stmt = $db->prepare("SELECT SUM(montant_paye_interet) AS total_interet 
-                              FROM ef_remboursement_pret 
-                              WHERE id_pret = ? AND date_remboursement BETWEEN ? AND ?");
-        $stmt->execute([$id_pret, $start_date, $end_date]);
-        return $stmt->fetch(PDO::FETCH_ASSOC)['total_interet'];
+    public static function find_montant_interet_between($db, $start_date, $end_date) {
+        $stmt = $db->prepare("SELECT * FROM ef_remboursement_pret 
+                              WHERE date_remboursement BETWEEN ? AND ?");
+        $stmt->execute([$start_date, $end_date]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public static function getAll($db) {
