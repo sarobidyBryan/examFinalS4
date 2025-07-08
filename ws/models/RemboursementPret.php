@@ -20,6 +20,7 @@ class RemboursementPret{
             $data->assurance,
             $data->id_pret
         ]);
+
         return ['id' => $db->lastInsertId()];
     }
 

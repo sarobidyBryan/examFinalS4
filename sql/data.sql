@@ -1,8 +1,8 @@
 insert into ef_banque (nom) values ('admin');
 
 INSERT INTO ef_type_mouvement (description) VALUES 
-('debit'),
-('credit');
+('sortie'),
+('entree');
 
 insert into ef_compte_banque (solde_actuel,solde_precedent,id_banque) values (0,0,1);
 
@@ -43,5 +43,6 @@ INSERT INTO ef_compte_client (solde_actuel, solde_precedent, id_client) VALUES
 
 
 
-INSERT INTO ef_definition_annee (nombre_jours) VALUES 
-(360), (365);
+
+insert into ef_mouvement_banque(date_mouvement, montant, id_compte_banque, id_type_mouvement)values("2025-07-07", 20000000, 1, 2);
+

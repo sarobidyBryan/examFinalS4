@@ -1,4 +1,4 @@
-CREATE database etablissement_financier;
+CREATE DATABASE etablissement_financier;
 USE etablissement_financier;
 
 -- 1. Client
@@ -55,6 +55,7 @@ CREATE TABLE ef_mouvement_banque (
     FOREIGN KEY (id_compte_banque) REFERENCES ef_compte_banque(id_compte_banque),
     FOREIGN KEY (id_type_mouvement) REFERENCES ef_type_mouvement(id_type_mouvement)
 );
+
 
 
 -- 7. Calcul taux d’intérêt
