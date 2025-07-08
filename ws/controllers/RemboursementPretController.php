@@ -42,20 +42,22 @@ $idPret = $data->id_pret ?? null;
     $tauxMensuel = ((float) $pret['taux']) / 100 / 12;
     $assuranceTotale = ($montant * ((float) $pret['assurance']) / 100);
     $assuranceMensuelle = round($assuranceTotale / $duree, 2);
-    $mensualite = ($montant * $tauxMensuel) / (1 - pow(1 + $tauxMensuel, -($duree - $delai)));
+    $mensualite = ($montant * $tauxMensuel) / (1 - pow(1 + $tauxMensuel, -($duree )));
     $mensualite = round($mensualite, 2);
 
     $reste = $montant;
     $date = new DateTime($pret['date_pret']);
 
-    for ($i = 1; $i <= $duree; $i++) {
+    for ($i = 1; $i <= $duree+$delai; $i++) {
         $date->modify('+1 month');
         $strDate = $date->format('Y-m-d');
 
         if ($i <= $delai) {
-            $interet = round($reste * $tauxMensuel, 2);
+            $interet = 0;
             $amortissement = 0;
+            $assuranceMensuelle = 0;
         } else {
+            $assuranceMensuelle = round($assuranceTotale / $duree, 2);
             $interet = round($reste * $tauxMensuel, 2);
             $amortissement = round($mensualite - $interet, 2);
         }
