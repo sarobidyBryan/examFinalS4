@@ -12,10 +12,10 @@ function renderTableAndChart(remboursements) {
                 tbody.innerHTML += `<tr>
                             <td>${remboursement.id_remboursement_pret}</td>
                             <td>${remboursement.date_remboursement}</td>
-                            <td>${remboursement.montant_paye_base}</td>
-                            <td>${remboursement.montant_paye_interet}</td>
-                            <td>${remboursement.montant_restant}</td>
-                            <td>${remboursement.assurance}</td>
+                            <td>${formatMontant(remboursement.montant_paye_base)}</td>
+                            <td>${formatMontant(remboursement.montant_paye_interet)}</td>
+                            <td>${formatMontant(remboursement.montant_restant)}</td>
+                            <td>${formatMontant(remboursement.assurance)}</td>
                             <td>${remboursement.id_pret}</td>
                         </tr>`;
             }

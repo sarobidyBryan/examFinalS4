@@ -17,7 +17,7 @@
         <label for="montant">Montant :</label>
         <input type="number" id="montant" name="montant" step="0.01" min="0" required placeholder="Entrez un montant">
         <label for="dateDeDepot">Date de dépot</label>
-        <input type="date" id="dateDeDepot" name="dateDeDepot" required>
+        <input type="date" id="dateDeDepot" value="<?= date('Y-m-d'); ?>" name="dateDeDepot" required>
         <button onclick="ajoutMontant()" class="btn-ajouter">
             <i class="fa fa-plus"></i> Ajouter
         </button>
