@@ -28,7 +28,8 @@ chargerSimulationsPourComparaison();
 
 function fetchSimulationById(id) {
     return new Promise((resolve, reject) => {
-        ajax("GET", `/param/${id}`, null, (res) => {
+        $data={'id':id};
+        ajax("GET", `/params`, $data, (res) => {
             if (res.error) {
                 reject(res.error);
             } else {
