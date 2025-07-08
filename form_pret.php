@@ -123,7 +123,7 @@ function validerPret() {
 function rembourserPret(idPret) {
   const data = { id_pret: idPret };
   console.log("idddd  " + data.id_pret);
-  ajax("POST", "/remboursement_pret/create", JSON.stringify(data), (res) => {
+  ajax("POST", "/remboursement_pret", JSON.stringify(data), (res) => {
     const msgDiv = document.getElementById("message");
     msgDiv.innerHTML += res.error 
       ? `<p style="color:red">${res.error}</p>` 

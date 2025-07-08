@@ -8,7 +8,7 @@ class SimulationPret {
         $assurance_mensuelle = $assurance_total / $duree;
 
         // Calcul de la mensualité constante (hors assurance)
-        $mensualite = ($montant * $taux_mensuel) / (1 - pow(1 + $taux_mensuel, -($duree - $delai)));
+        $mensualite = ($montant * $taux_mensuel) / (1 - pow(1 + $taux_mensuel, -($duree )));
 
         $reste = $montant;
         $paiements = [];
@@ -18,7 +18,7 @@ class SimulationPret {
         $total_amortissement = 0;
         $total_mensualite = 0;
 
-        for ($mois = 1; $mois <= $duree; $mois++) {
+        for ($mois = 1; $mois <= $duree+$delai; $mois++) {
             $interet = 0;
             $amortissement = 0;
             $mens = 0;
